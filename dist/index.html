@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#090b12" />
+    <title>Night Watch — Found Footage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-labelledby="app-title">
+      <section id="feed" class="feed" aria-label="Nighttime security camera feed">
+        <div id="scene-world" class="scene-world" aria-hidden="true">
+        <div class="sky" aria-hidden="true">
+          <div class="moon"></div>
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+        </div>
+
+        <div class="distant-houses" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="street" aria-hidden="true"></div>
+        <div class="hedge hedge-left" aria-hidden="true"></div>
+        <div class="hedge hedge-right" aria-hidden="true"></div>
+        <div class="fog fog-one" aria-hidden="true"></div>
+        <div class="fog fog-two" aria-hidden="true"></div>
+        <div class="leaves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="foreground-cover" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="bottom-brush" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+        <div class="house" aria-hidden="true">
+          <div class="roof"></div>
+          <div class="chimney"></div>
+          <div class="wall">
+            <div class="upper-window"><span class="curtain left"></span><span class="curtain right"></span><svg class="window-figures" viewBox="0 0 100 100" aria-hidden="true"><g class="figure-primary"><circle cx="38" cy="27" r="9"/><path d="M25 89Q27 45 38 39Q50 46 52 89Z"/></g><g class="figure-echo"><circle cx="68" cy="76" r="8"/><path d="M55 10Q57 54 68 62Q80 54 82 10Z"/></g></svg></div>
+            <div class="lower-window"></div>
+            <div class="front-door"><span class="door-gap"></span><svg class="door-limbs" viewBox="0 0 120 160" aria-hidden="true"><g class="limb limb-one"><path d="M6 24C36 18 58 28 84 42"/><path class="fingers" d="M84 42l13-8M84 42l15 1M84 42l10 10"/></g><g class="limb limb-two"><path d="M6 57C37 47 59 62 91 70"/><path class="fingers" d="M91 70l12-7M91 70l15 2M91 70l9 10"/></g><g class="limb limb-three"><path d="M6 94C38 84 65 100 84 113"/><path class="fingers" d="M84 113l13-7M84 113l14 2M84 113l9 11"/></g><g class="limb limb-four"><path d="M6 130C35 119 57 131 76 142"/><path class="fingers" d="M76 142l12-7M76 142l13 2M76 142l8 10"/></g></svg></div>
+          </div>
+          <div class="porch"><span class="porch-light"></span></div>
+        </div>
+
+        <div class="streetlamp" aria-hidden="true"><span class="lamp-head"></span><span class="lamp-glow"></span><span class="glass-shards"><i></i><i></i><i></i></span></div>
+        <div class="mailbox" aria-hidden="true"><span></span></div>
+        </div>
+
+        <div class="scanlines" aria-hidden="true"></div>
+        <div class="vignette" aria-hidden="true"></div>
+        <svg id="binocular-mask" class="binocular-mask" viewBox="0 0 100 180" preserveAspectRatio="none" aria-hidden="true">
+          <defs><mask id="lens-openings"><rect width="100" height="180" fill="white"/><circle cx="25" cy="90" r="25" fill="black"/><circle cx="75" cy="90" r="25" fill="black"/></mask></defs>
+          <rect width="100" height="180" fill="#050608" mask="url(#lens-openings)"/>
+          <circle cx="25" cy="90" r="25" fill="none" stroke="#30333a" stroke-width="2"/><circle cx="75" cy="90" r="25" fill="none" stroke="#30333a" stroke-width="2"/>
+        </svg>
+        <div id="story-message" class="story-message" role="status" aria-live="polite"></div>
+
+        <button class="scene-target lamp-target" data-target="lamp" aria-label="Inspect the driveway streetlamp"><span>Driveway light</span></button>
+        <button class="scene-target window-target" data-target="window" aria-label="Inspect the upstairs window"><span>Upstairs window</span></button>
+        <button class="scene-target door-target" data-target="door" aria-label="Inspect the front door"><span>Front door</span></button>
+
+        <header class="feed-header">
+          <p class="recording"><span class="record-dot"></span> REC</p>
+          <p class="camera-label">CAM 04 / NORTH STREET</p>
+        </header>
+        <footer class="feed-footer">
+          <p id="timestamp">10/19/2026 23:47:08</p>
+          <p id="signal">SIGNAL: STABLE</p>
+        </footer>
+      </section>
+
+      <section id="focus-ui" class="focus-ui" hidden aria-live="polite">
+        <p id="focus-label">OBSERVATION RECORDED</p>
+        <button id="return-overview" type="button">Return to overview</button>
+      </section>
+
+      <section class="hud" aria-label="Experience controls">
+        <p id="hint" class="hint" aria-live="polite">The feed is quiet. Let your eyes adjust.</p>
+        <div class="progress" aria-label="Anomaly record progress"><span id="progress-label">ANOMALIES RECORDED 0 / 3</span><div class="progress-dots" aria-hidden="true"><i></i><i></i><i></i></div></div>
+        <button id="pause-button" class="pause-button" type="button" disabled aria-pressed="false">Pause feed</button>
+      </section>
+
+      <section id="start-screen" class="start-screen" aria-labelledby="app-title">
+        <div class="start-card">
+          <p class="eyebrow">ARCHIVED SECURITY FOOTAGE</p>
+          <h1 id="app-title">NIGHT WATCH</h1>
+          <p class="intro">A house at the edge of a quiet neighborhood. Nothing moves—until you keep watching.</p>
+          <label class="motion-choice"><input id="reduce-motion" type="checkbox" /> Use reduced motion <span id="motion-note"></span></label>
+          <button id="enter-button" class="enter-button" type="button">Enter the feed</button>
+          <p class="small-print">Headphones optional. Sound starts only after you enter.</p>
+          <p class="small-print">Created by: Project 4 developer. Original HTML, CSS, JavaScript, SVG artwork, and procedural audio.</p>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
